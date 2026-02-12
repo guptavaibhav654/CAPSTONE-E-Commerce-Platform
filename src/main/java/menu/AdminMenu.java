@@ -1,6 +1,7 @@
 package menu;
 
 import service.ProductService;
+import decorator.*;
 
 import java.util.Scanner;
 
@@ -16,7 +17,8 @@ public class AdminMenu {
                 2. Add Product
                 3. Update Product
                 4. Delete Product
-                5. Logout
+                5. Check Price with GST (Decorator Demo)
+                6. Logout
                 """);
 
             int ch = get(sc);
@@ -56,7 +58,18 @@ public class AdminMenu {
                     productService.deleteProduct(id);
                 }
 
-                case 5 -> { return; }
+                case 5 -> {
+                    // Decorator demo
+                    System.out.print("Enter base price: ");
+                    double price = sc.nextDouble(); sc.nextLine();
+
+                    ProductComponent product = new BaseProduct(price);
+                    product = new FestivalDiscount(product);
+
+                    System.out.println("Final price with GST: ₹"+product.getPrice());
+                }
+
+                case 6 -> { return; }
 
                 default -> System.out.println("Invalid");
             }

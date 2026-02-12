@@ -2,6 +2,8 @@ package menu;
 
 import model.User;
 import service.*;
+import strategy.*;
+import java.util.*;
 
 import java.util.Scanner;
 
@@ -52,6 +54,15 @@ public class UserMenu {
                 case 6 -> orderService.viewOrders(user);
 
                 case 7 -> { return; }
+
+                case 8 -> {
+                    System.out.println("Search by name:");
+                    String key = sc.nextLine();
+
+                    SearchStrategy strategy = new SearchByName();
+                    strategy.search(new ArrayList<>(productService.getAllProducts()),key)
+                            .forEach(System.out::println);
+                }
 
                 default -> System.out.println("Invalid");
             }

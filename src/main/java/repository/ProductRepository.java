@@ -1,7 +1,7 @@
 package repository;
 
 import model.Product;
-
+import factory.ProductFactory;
 import java.util.*;
 
 public class ProductRepository {
@@ -17,7 +17,7 @@ public class ProductRepository {
     }
 
     public void save(String name,String category,double price){
-        Product p = new Product(idCounter++,name,category,price);
+        Product p = ProductFactory.createProduct(name,category,price);
         products.put(p.getId(),p);
     }
 

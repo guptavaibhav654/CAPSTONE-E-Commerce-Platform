@@ -5,6 +5,7 @@ import model.User;
 import repository.OrderRepository;
 import service.CartService;
 import service.OrderService;
+import builder.OrderBuilder;
 
 import java.util.List;
 
@@ -26,7 +27,11 @@ public class OrderServiceImpl implements OrderService {
             return;
         }
 
-        Order order = new Order(user,cart.getItems(),cart.getTotal());
+        Order order = new OrderBuilder()
+                .setUser(user)
+                .setItems(cart.getItems())
+                .setTotal(cart.getTotal())
+                .build();
         repo.save(user.getId(),order);
         cart.clear();
 

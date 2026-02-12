@@ -1,7 +1,7 @@
 package repository;
 
 import model.User;
-
+import factory.UserFactory;
 import java.util.*;
 
 public class UserRepository {
@@ -14,7 +14,8 @@ public class UserRepository {
         if(users.containsKey(email))
             return false;
 
-        users.put(email,new User(idCounter++,name,email,password));
+        User user = UserFactory.createUser(name,email,password);
+        users.put(email,user);
         return true;
     }
 
