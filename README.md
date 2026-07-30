@@ -1,123 +1,66 @@
 # E-Commerce Platform
 
-## Description
-In this capstone project, you will design and implement an E-Commerce Platform that allows users to browse products, add items to their cart, place orders, and manage their profiles. The system should support functionalities such as product management, user registration, shopping cart operations, order processing, and search functionality. The project will integrate various Java concepts, including Object-Oriented Programming (OOP), Collections, Java 8 features, SOLID principles, and design patterns.
+[![Build Status](https://img.shields.io/badge/build-passing-brightgreen.svg)](https://github.com/guptavaibhav654/CAPSTONE-E-Commerce-Platform/actions)
+[![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+[![Contributors](https://img.shields.io/badge/contributors-1-orange.svg)](https://github.com/guptavaibhav654/CAPSTONE-E-Commerce-Platform/graphs/contributors)
 
-## Topics Covered
-- **Object-Oriented Programming (OOP)**
-  - Classes and Objects
-  - Inheritance
-  - Polymorphism
-  - Encapsulation
-  - Abstraction
-- **Strings**
-  - String manipulation
-  - StringBuilder and StringBuffer
-- **Collections**
-  - List, Set, Map
-  - Iteration and manipulation of collections
-- **Java 8 Essentials**
-  - Stream API
-  - Lambda Expressions
-  - Functional Interfaces
-  - Optional
-- **SOLID Principles**
-  - Single Responsibility Principle
-  - Open/Closed Principle
-  - Liskov Substitution Principle
-  - Interface Segregation Principle
-  - Dependency Inversion Principle
-- **Design Patterns**
-  - Factory Pattern
-  - Decorator Pattern
-  - Builder Pattern
-  - Strategy Pattern
+A Spring Boot-based E-commerce platform featuring users, products, shopping cart, and orders. Includes REST endpoints, service layer, JPA repositories, DTOs, mappers, and basic exception handling.
 
-## Objectives
-By completing this project, learners should be able to:
-1. Apply OOP principles to design a robust and maintainable system.
-2. Utilize Java Collections to manage data efficiently.
-3. Implement Java 8 features such as Stream API, Lambda Expressions, and Functional Interfaces.
-4. Adhere to SOLID principles to ensure code quality and scalability.
-5. Use design patterns to solve common software design problems.
+## Quick Start
 
-## Project Scope
-**Complexity Level:** Easy
+Prerequisites:
+- Java 21
+- Git
+- Maven (or use the included Maven Wrapper)
 
-**Key Features/Modules to be Implemented:**
-1. **Product.Product Management:**
-   - Add new products
-   - Update product details
-   - Delete products
-   - Search for products by name, category, or price range
-2. **User.User Management:**
-   - Register new users
-   - Update user profiles
-   - Delete users
-   - Authenticate users (login/logout)
-3. **Shopping Cart:**
-   - Add items to the cart
-   - Remove items from the cart
-   - View cart contents
-   - Calculate total price
-4. **Order Processing:**
-   - Place orders
-   - View order history
-   
-## Deliverables
-1. **Code:**
-   - Well-structured and documented source code
-2. **Documentation:**
-   - Project documentation including design decisions, class diagrams, and usage instructions
-3. **Test Cases:**
-   - Unit tests for key functionalities
-4. **Deployment Instructions:**
-   - Instructions to run the application locally
+Clone and run:
 
-## Guidelines
-**Day 1:**
-1. **Project Setup:**
-   - Initialize a new Java project
-   - Set up the project structure with packages for different modules (e.g., products, users, cart, orders)
-2. **Product.Product Management Module:**
-   - Create classes for Product.Product and Product.ProductService
-   - Implement CRUD operations for products
-   - Use Collections (e.g., List) to store product data
-3. **User.User Management Module:**
-   - Create classes for User.User and User.UserService
-   - Implement CRUD operations for users
-   - Use Collections (e.g., List) to store user data
+```bash
+git clone https://github.com/guptavaibhav654/CAPSTONE-E-Commerce-Platform.git
+cd CAPSTONE-E-Commerce-Platform
+./mvnw clean package
+./mvnw spring-boot:run
+```
 
-**Day 2:**
+API base: `http://localhost:8080/api`
+H2 console: `http://localhost:8080/api/h2-console`
 
-4. **Shopping Cart Module:**
-   - Create classes for Cart and CartService
-   - Implement functionalities to add, remove, and view items in the cart
-   - Calculate total price of items in the cart
+## Important Endpoints
+- POST /api/users/register — register user (UserRequest)
+- POST /api/users/login — login (LoginRequest)
+- POST /api/products — create product (ProductRequest)
+- GET /api/products/page — paginated products
+- POST /api/cart — add to cart (AddCartRequest)
+- POST /api/orders — place order (userId)
 
-5. **Order Processing Module:**
-   - Create classes for Order and OrderService
-   - Implement functionalities to place orders and view order history
-   
-6. **Java 8 Features:**
-   - Use Optional to handle null values
-   - Implement Functional Interfaces for custom operations
+Full API details and diagrams: `PROJECT_ARCHITECTURE.md`, `MERMAID_DIAGRAMS.md`, `QUICK_REFERENCE.md`.
 
-**Day 3:**
+## Configuration
+Edit `src/main/resources/application.properties` to configure datasource, port, and logging.
 
-7. **SOLID Principles:**
-   - Refactor code to adhere to SOLID principles
-   - Ensure each class has a single responsibility
-   - Use interfaces and abstract classes where appropriate
+## Security
+- Passwords hashed with BCrypt (PasswordEncoder bean in `SecurityConfig`)
+- Validation via Jakarta Validation annotations
 
-8. **Design Patterns:**
-   - Implement Factory Pattern for creating product and user objects
-   - Use Decorator Pattern to add additional features to products (e.g., discounts)
-   - Apply Builder Pattern for constructing complex objects
-   - Implement Strategy Pattern for different search strategies
+## Development Notes
+- Monetary values use `BigDecimal`.
+- Global exception handler returns appropriate HTTP status codes (400/404/409/500).
+- Use the Maven wrapper (`mvnw`) if Maven is not installed system-wide.
 
-**Day 4:**
+## Contributing
+1. Fork the repo
+2. Create a branch: `git checkout -b feature/my-feature`
+3. Commit changes: `git commit -m "Add feature"`
+4. Push and open a PR
 
-9. **Testing and Documentation:**
-   - Write unit tests for key functionalities
-   - Document the project with design decisions and usage instructions
+Include this Co-authored-by footer in commits if using Copilot changes:
+```
+Co-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>
+```
+
+## License
+This project uses the MIT License. Add `LICENSE` file to the repository.
+
+---
+
+For detailed architecture diagrams and developer guide see `PROJECT_ARCHITECTURE.md` and `QUICK_REFERENCE.md`.
